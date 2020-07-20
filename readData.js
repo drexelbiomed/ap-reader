@@ -36,6 +36,12 @@ apDataObjects.forEach((recordInstance, index) => {
       name: recordInstance.Student,
       id: studentId,
       advisor: studentAdvisor,
+      apcredit1: {
+        testcode: recordInstance['Test Code'],
+        testname: recordInstance['Test Desc'],
+        testscore: recordInstance['Test Score'],
+        loadDate: recordInstance['AP Load Date'],
+      },
     }
   }
 })
