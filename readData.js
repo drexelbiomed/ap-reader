@@ -15,24 +15,20 @@ function mergeObjects() {
     const studentAdvisor = recordInstance['Advisor Name'];
     const ifIdFound = mergedStudentObjects.hasOwnProperty(studentId);
     const apCode = recordInstance['Test Code'];
+    const apTestEntry = {
+      testname: recordInstance['Test Desc'],
+      testscore: recordInstance['Test Score'],
+      loadDate: recordInstance['AP Load Date'],
+    }
   
     if (ifIdFound) {
-      mergedStudentObjects[studentId][`apTest-${apCode}`] = {
-        testcode: recordInstance['Test Code'],
-        testname: recordInstance['Test Desc'],
-        testscore: recordInstance['Test Score'],
-        loadDate: recordInstance['AP Load Date'],
-      }
+      mergedStudentObjects[studentId][`apTest-${apCode}`] = apTestEntry;
     } else {
       mergedStudentObjects[studentId] = {
         name: recordInstance.Student,
         id: studentId,
         advisor: studentAdvisor,
-        [`apTest-${apCode}`]: {
-          testname: recordInstance['Test Desc'],
-          testscore: recordInstance['Test Score'],
-          loadDate: recordInstance['AP Load Date'],
-        },
+        [`apTest-${apCode}`]: apTestEntry,
       }
     }
   })
