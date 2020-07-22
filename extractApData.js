@@ -11,7 +11,7 @@ function mergeObjects() {
   const mergedStudentObjects = {};
 
   apDataObjects.forEach(recordInstance => {
-    const studentId = recordInstance['Univ Id'];
+    const studentId = Number(recordInstance['Univ Id']);
     const studentAdvisor = recordInstance['Advisor Name'];
     const ifIdFound = mergedStudentObjects.hasOwnProperty(studentId);
     const apCode = recordInstance['Test Code'];
@@ -23,7 +23,6 @@ function mergeObjects() {
     }
   
     if (ifIdFound) {
-      // mergedStudentObjects[studentId][`apTest-${apCode}`] = apTestEntry;
       mergedStudentObjects[studentId].tests.push(apTestEntry)
     } else {
       mergedStudentObjects[studentId] = {
@@ -34,12 +33,7 @@ function mergeObjects() {
       }
     }
   })
-
   return mergedStudentObjects;
 }
 
-const mergedObjects = mergeObjects();
-
-Object.values(mergedObjects).forEach(value => {
-  console.log(value);
-})
+module.exports = mergeObjects();

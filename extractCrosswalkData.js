@@ -5,5 +5,4 @@ function dataToJSON(excelSheet) {
   return XLSX.utils.sheet_to_json(excelSheet);
 }
 
-const crossWalkObjects = dataToJSON(excelCrosswalk.Sheets.ap_crosswalk_201945);
-console.log(crossWalkObjects);
+module.exports = dataToJSON(excelCrosswalk.Sheets.ap_crosswalk_201945);
