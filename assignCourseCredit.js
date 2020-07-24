@@ -1,6 +1,6 @@
 const studentApData = require('./extractApData.js');
 const apCrosswalkData = require('./extractCrosswalkData.js');
-// TODO Scores of 4 are awarding AP Calc credit for both MATH 121 and MATH 122. Fix this.
+// TODO Clean up code.
 function apCreditAssignment(students, apTests) {
   for (let student of Object.values(students)) {
     student.creditAwarded = [];
@@ -31,7 +31,7 @@ function apCreditAssignment(students, apTests) {
       }
     }
   }
-  return students['14347618'].creditAwarded;
+  return students.creditAwarded;
 }
 
 console.log(apCreditAssignment(studentApData, apCrosswalkData));
